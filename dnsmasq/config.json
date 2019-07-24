@@ -18,6 +18,7 @@
     "53/udp": 53
   },
   "host_network": true,
+  "privileged":"NET_ADMIN"
   "options": {
     "domain":[],
     "defaults": [
