@@ -40,7 +40,10 @@ Example add-on configuration:
   ],
   "hosts": [
     {"host": "home.mydomain.io", "ip": "192.168.1.10"}
-  ]
+  ],
+  "dhcp-range": [],
+  "dhcp-host": [],
+  "dhcp-option": []
 }
 ```
 

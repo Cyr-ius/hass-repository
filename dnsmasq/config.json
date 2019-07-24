@@ -49,7 +49,10 @@
       }
     ],
     "dhcp-range": [
-      "str"
+      "start": "str",
+      "end": "str",
+      "mask": "str",
+      "delay": "str"
     ],
     "dhcp-host": [
       {
