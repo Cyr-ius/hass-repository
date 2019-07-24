@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.5
+
+- Fix NET ADMIN
+
 ## 1.4
 
 - Add DHCP functions
