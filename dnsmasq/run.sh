@@ -53,7 +53,7 @@ for host in $(bashio::config 'dhcphost|keys'); do
 done
 
 # Create dhcp options
-for option in $(bashio::config 'dhcp-option|keys'); do
+for option in $(bashio::config 'dhcpoption|keys'); do
     ITEM=$(bashio::config "dhcpoption[${option}].item")
     IP=$(bashio::config "dhcpoption[${option}].ip")
 
