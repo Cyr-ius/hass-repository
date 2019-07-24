@@ -41,7 +41,6 @@ for range in $(bashio::config 'dhcprange|keys'); do
     DELAY=$(bashio::config "dhcprange[${range}].delay")
     echo "dhcp-range=${START},${END},${MASK},${DELAY}" >> "${CONFIG}"
     echo "dhcp-leasefile=/etc/dnsmasq.leases" >> "${CONFIG}"
-    echo "dhcp-autoritative" >> "${CONFIG}"
 done
 
 # Create dhcp hosts
@@ -62,4 +61,5 @@ done
 
 # run dnsmasq
 bashio::log.info "Starting dnsmasq..."
+cat "${CONFIG}"
 exec dnsmasq -C "${CONFIG}" -z < /dev/null
