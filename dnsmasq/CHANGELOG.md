@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.5
+
+- Fix DHCP functions
+
 ## 1.4
 
 - Add DHCP functions
