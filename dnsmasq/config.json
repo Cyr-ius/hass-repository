@@ -63,6 +63,5 @@
         "ip": "str"
       }
     ]      
-  },
-  "image": "homeassistant/{arch}-addon-dnsmasq"
+  }
 }
