@@ -1,8 +1,8 @@
 {
   "name": "Dnsmasq",
-  "version": "1.3",
+  "version": "1.5",
   "slug": "dnsmasq",
-  "description": "A simple DNS server",
+  "description": "A simple DNS and DHCP server",
   "url": "https://home-assistant.io/addons/dnsmasq/",
   "arch": [
     "armhf",
