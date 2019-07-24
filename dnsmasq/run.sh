@@ -34,11 +34,11 @@ for host in $(bashio::config 'hosts|keys'); do
 done
 
 # Create dhcp range
-for range in $(bashio::config 'dhcp-range|keys'); do
-    START=$(bashio::config "dhcp-range[${range}].start")
-    END=$(bashio::config "dhcp-range[${range}].end")
-    MASK=$(bashio::config "dhcp-range[${range}].mask")
-    DELAY=$(bashio::config "dhcp-range[${range}].delay")
+for range in $(bashio::config 'dhcprange|keys'); do
+    START=$(bashio::config "dhcprange[${range}].start")
+    END=$(bashio::config "dhcprange[${range}].end")
+    MASK=$(bashio::config "dhcprange[${range}].mask")
+    DELAY=$(bashio::config "dhcprange[${range}].delay")
     echo "dhcp-range=${START},${END},${MASK},${DELAY}" >> "${CONFIG}"
     echo "dhcp-leasefile=/etc/dnsmasq.leases" >> "${CONFIG}"
     echo "dhcp-autoritative" >> "${CONFIG}"
