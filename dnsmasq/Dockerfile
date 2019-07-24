@@ -11,5 +11,7 @@ RUN apk add --no-cache dnsmasq
 COPY run.sh /
 RUN chmod a+x /run.sh
 COPY dnsmasq.conf /etc/
+COPY dnsmasq.leases /etc/
+RUN chmod a+rw /etc/dnsmasq.leases
 
 CMD [ "/run.sh" ]
