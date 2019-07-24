@@ -10,8 +10,10 @@ RUN apk add --no-cache dnsmasq
 # Copy data
 COPY run.sh /
 RUN chmod a+x /run.sh
-COPY dnsmasq.conf /etc/
-COPY dnsmasq.leases /etc/
-RUN chmod a+rw /etc/dnsmasq.leases
 
+WORKDIR /data
+COPY dnsmasq.leases /data/
+RUN chmod a+rw /data/dnsmasq.leases
+
+COPY dnsmasq.conf /etc/
 CMD [ "/run.sh" ]
