@@ -1,6 +1,6 @@
 {
   "name": "Dnsmasq advanced",
-  "version": "1.5",
+  "version": "1.5.1",
   "slug": "dnsmasqadvanced",
   "description": "A simple DNS and DHCP server",
   "url": "https://github.com/cyr-ius/hass-repository/",
@@ -18,7 +18,7 @@
     "53/udp": 53
   },
   "host_network": true,
-  "privileged":"NET_ADMIN",
+  "privileged": ["NET_ADMIN"],
   "options": {
     "domain":[],
     "defaults": [
