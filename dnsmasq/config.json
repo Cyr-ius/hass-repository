@@ -26,8 +26,8 @@
     "forwards": [],
     "hosts": [],
     "dhcprange": [],
-    "dhcp-host": [],
-    "dhcp-option": []
+    "dhcphost": [],
+    "dhcpoption": []
   },
   "schema": {
     "domain": [
@@ -56,13 +56,13 @@
         "delay": "str"
       }
     ],
-    "dhcp-host": [
+    "dhcphost": [
       {
         "mac": "str",
         "ip": "str"
       }
     ],
-    "dhcp-option": [
+    "dhcpoption": [
       {
         "item": "str",
         "ip": "str"

@@ -45,17 +45,17 @@ for range in $(bashio::config 'dhcprange|keys'); do
 done
 
 # Create dhcp hosts
-for host in $(bashio::config 'dhcp-host|keys'); do
-    MAC=$(bashio::config "dhcp-host[${host}].mac")
-    IP=$(bashio::config "dhcp-host[${host}].ip")
+for host in $(bashio::config 'dhcphost|keys'); do
+    MAC=$(bashio::config "dhcphost[${host}].mac")
+    IP=$(bashio::config "dhcphost[${host}].ip")
 
     echo "dhcp-host=${MAC},${IP}" >> "${CONFIG}"
 done
 
 # Create dhcp options
 for option in $(bashio::config 'dhcp-option|keys'); do
-    ITEM=$(bashio::config "dhcp-option[${option}].item")
-    IP=$(bashio::config "dhcp-option[${option}].ip")
+    ITEM=$(bashio::config "dhcpoption[${option}].item")
+    IP=$(bashio::config "dhcpoption[${option}].ip")
 
     echo "dhcp-option=${ITEM},${IP}" >> "${CONFIG}"
 done
