@@ -20,7 +20,7 @@
   "host_network": true,
   "full_access": true,
   "privileges": ["NET_ADMIN"],
-  "apparmor": false,
+  "apparmor": true,
   "options": {
     "domain":[],
     "defaults": [
