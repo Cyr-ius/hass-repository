@@ -15,6 +15,8 @@ profile dnsmasq flags=(attach_disconnected,mediate_deleted) {
   /bin/bash ix,
   /usr/bin/jq ix,
   /usr/sbin/dnsmasq ix,
+  /usr/sbin/arp ix,
+  /usr/sbin/ip* ix,
 
   /etc/dnsmasq.conf rw,
   /{,var/}run/*dnsmasq*.pid w,
@@ -24,7 +26,8 @@ profile dnsmasq flags=(attach_disconnected,mediate_deleted) {
   /usr/lib/bashio/bashio ix,
   /dev/tty rw,
   /tmp/* rw,
+  /proc/net/* rw
 
   /run.sh rix,
-  /data/** r,
+  /data/** rw,
 }
