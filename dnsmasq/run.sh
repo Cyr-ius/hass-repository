@@ -10,6 +10,7 @@ for domain in $(bashio::config 'domain'); do
     echo "local=/${domain}/" >> "${CONFIG}"
     echo "domain-needed" >> "${CONFIG}"
     echo "expand-hosts" >> "${CONFIG}"
+    echo "bogus-priv" >> "${CONFIG}"
 done
 
 # Add default forward servers
@@ -53,10 +54,10 @@ done
 
 # Create dhcp options
 for option in $(bashio::config 'dhcpoption|keys'); do
-    ITEM=$(bashio::config "dhcpoption[${option}].item")
-    IP=$(bashio::config "dhcpoption[${option}].ip")
+    OPTION=$(bashio::config "dhcpoption[${option}].option")
+    VALUE=$(bashio::config "dhcpoption[${option}].value")
 
-    echo "dhcp-option=${ITEM},${IP}" >> "${CONFIG}"
+    echo "dhcp-option=option:${OPTION},${VALUE}" >> "${CONFIG}"
 done
 
 # run dnsmasq
