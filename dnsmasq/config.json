@@ -1,6 +1,6 @@
 {
   "name": "Dnsmasq advanced",
-  "version": "1.6.1",
+  "version": "1.6.2",
   "slug": "dnsmasqadvanced",
   "description": "A simple DNS and DHCP server",
   "url": "https://github.com/cyr-ius/hass-repository/",
@@ -20,7 +20,7 @@
   "host_network": true,
   "full_access": true,
   "privileges": ["NET_ADMIN"],
-  "apparmor": true,
+  "apparmor": false,
   "options": {
     "domain":[],
     "defaults": [
