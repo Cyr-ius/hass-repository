@@ -19,6 +19,7 @@ profile dnsmasq flags=(attach_disconnected,mediate_deleted) {
   /usr/sbin/ip* ix,
 
   /etc/dnsmasq.conf rw,
+  /data/dnsmasq.leases rw,
   /{,var/}run/*dnsmasq*.pid w,
   /{,var/}run/dnsmasq/ r,
   /{,var/}run/dnsmasq/* rw,
@@ -29,5 +30,5 @@ profile dnsmasq flags=(attach_disconnected,mediate_deleted) {
   /proc/net/* rw
 
   /run.sh rix,
-  /data/** rw,
+  /data/* rw,
 }

@@ -1,6 +1,6 @@
 {
   "name": "Dnsmasq advanced",
-  "version": "1.5.9",
+  "version": "1.6.0",
   "slug": "dnsmasqadvanced",
   "description": "A simple DNS and DHCP server",
   "url": "https://github.com/cyr-ius/hass-repository/",
