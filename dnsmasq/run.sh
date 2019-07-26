@@ -62,9 +62,9 @@ if bashio::var.has_value "${RANGE}";then
     echo "dhcp-authoritative" >> "${CONFIG}"
 fi
 
-if $(bashio::config 'enable-ra');then
+if $(bashio::config 'enablera');then
     echo "enable-ra" >> "${CONFIG}"
-    RAPARAM=$(bashio::config 'ra-param')
+    RAPARAM=$(bashio::config 'raparam')
     if bashio::var.has_value "${RAPARAM}";then
         echo "ra-param=${RAPARAM}" >> "${CONFIG}"
     fi
