@@ -68,7 +68,7 @@ if $(bashio::config 'enable-ra');then
     if bashio::var.has_value "${RAPARAM}";then
         echo "ra-param=${RAPARAM}" >> "${CONFIG}"
     fi
-if
+fi
 
 if  $(bashio::config 'debug');then
     bashio::log.info "Viewing dnsmasq config"
