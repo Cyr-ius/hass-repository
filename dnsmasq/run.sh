@@ -2,7 +2,7 @@
 set -e
 
 CONFIG="/etc/dnsmasq.conf"
-
+DEBUG=$(bashio::config 'debug')
 bashio::log.info "Configuring dnsmasq..."
 # Add domain range
 for domain in $(bashio::config 'domain'); do
@@ -36,20 +36,17 @@ done
 
 # Create dhcp range
 for range in $(bashio::config 'dhcprange|keys'); do
-    START=$(bashio::config "dhcprange[${range}].start")
-    END=$(bashio::config "dhcprange[${range}].end")
-    MASK=$(bashio::config "dhcprange[${range}].mask")
-    DELAY=$(bashio::config "dhcprange[${range}].delay")
-    echo "dhcp-range=${START},${END},${MASK},${DELAY}" >> "${CONFIG}"
-    echo "dhcp-leasefile=/data/dnsmasq.leases" >> "${CONFIG}"
+    RANGE=$(bashio::config "dhcprange[${range}].range")
+    
+    echo "dhcp-range=${RANGE}" >> "${CONFIG}"
 done
 
 # Create dhcp hosts
 for host in $(bashio::config 'dhcphost|keys'); do
     MAC=$(bashio::config "dhcphost[${host}].mac")
-    IP=$(bashio::config "dhcphost[${host}].ip")
+    VALUE=$(bashio::config "dhcphost[${host}].value")
 
-    echo "dhcp-host=${MAC},${IP}" >> "${CONFIG}"
+    echo "dhcp-host=${MAC},${VALUE}" >> "${CONFIG}"
 done
 
 # Create dhcp options
@@ -57,10 +54,21 @@ for option in $(bashio::config 'dhcpoption|keys'); do
     OPTION=$(bashio::config "dhcpoption[${option}].option")
     VALUE=$(bashio::config "dhcpoption[${option}].value")
 
-    echo "dhcp-option=option:${OPTION},${VALUE}" >> "${CONFIG}"
+    echo "dhcp-option=${OPTION},${VALUE}" >> "${CONFIG}"
 done
+
+if bashio::var.has_value "${RANGE}";then
+    echo "dhcp-leasefile=/data/dnsmasq.leases" >> "${CONFIG}"
+    echo "dhcp-authoritative" >> "${CONFIG}"
+fi
+
+if  [ ${DEBUG} ];then
+    bashio::log.info "Viewing dnsmasq config"
+    bashio::log.info "----------------------"    
+    cat "${CONFIG}"
+    bashio::log.info "----------------------"
+fi
 
 # run dnsmasq
 bashio::log.info "Starting dnsmasq..."
-cat "${CONFIG}"
 exec dnsmasq -C "${CONFIG}" -z < /dev/null

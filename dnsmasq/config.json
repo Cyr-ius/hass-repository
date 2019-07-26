@@ -1,6 +1,6 @@
 {
   "name": "Dnsmasq advanced",
-  "version": "1.6.2",
+  "version": "1.6.3",
   "slug": "dnsmasqadvanced",
   "description": "A simple DNS and DHCP server",
   "url": "https://github.com/cyr-ius/hass-repository/",
@@ -22,6 +22,7 @@
   "privileges": ["NET_ADMIN"],
   "apparmor": false,
   "options": {
+    "debug": false,
     "domain":[],
     "defaults": [
       "8.8.8.8",
@@ -34,12 +35,9 @@
     "dhcpoption": []
   },
   "schema": {
-    "domain": [
-      "str"
-    ],  
-    "defaults": [
-      "str"
-    ],
+    "debug": "bool",
+    "domain": ["str"],  
+    "defaults": ["str"],
     "forwards": [
       {
         "domain": "str",
@@ -53,17 +51,14 @@
       }
     ],
     "dhcprange": [
-      {
-        "start": "str",
-        "end": "str",
-        "mask": "str",
-        "delay": "str"
+    {
+        "range": "str"
       }
     ],
     "dhcphost": [
       {
         "mac": "str",
-        "ip": "str"
+        "value": "str"
       }
     ],
     "dhcpoption": [
