@@ -2,7 +2,7 @@
 set -e
 
 CONFIG="/etc/dnsmasq.conf"
-DEBUG=$(bashio::config 'debug')
+
 bashio::log.info "Configuring dnsmasq..."
 # Add domain range
 for domain in $(bashio::config 'domain'); do
@@ -62,7 +62,15 @@ if bashio::var.has_value "${RANGE}";then
     echo "dhcp-authoritative" >> "${CONFIG}"
 fi
 
-if  [ ${DEBUG} ];then
+if $(bashio::config 'enable-ra');then
+    echo "enable-ra" >> "${CONFIG}"
+    RAPARAM=$(bashio::config 'ra-param')
+    if bashio::var.has_value "${RAPARAM}";then
+        echo "ra-param=${RAPARAM}" >> "${CONFIG}"
+    fi
+if
+
+if  $(bashio::config 'debug');then
     bashio::log.info "Viewing dnsmasq config"
     bashio::log.info "----------------------"    
     cat "${CONFIG}"
