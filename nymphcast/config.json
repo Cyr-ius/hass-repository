@@ -11,11 +11,11 @@
   "startup": "system",
   "boot": "auto",
   "ports": {
-    "4004/tcp": 53
+    "4004/tcp": 4004
   },
   "host_network": true,
   "full_access": true,
-  "privileges": ["NET_ADMIN"],
+  "privileges": [],
   "apparmor": false,
   "options": {},
   "schema": {}
