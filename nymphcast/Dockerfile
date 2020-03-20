@@ -5,7 +5,7 @@ FROM $BUILD_FROM
 ENV LANG C.UTF-8
 
 # Setup base
-RUN apk add --no-cache nymphcast
+RUN apk add --no-cache -X http://dl-cdn.alpinelinux.org/alpine/edge/testing nymphcast-server
 
 # Copy data
 COPY run.sh /
