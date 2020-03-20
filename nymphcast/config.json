@@ -1,0 +1,22 @@
+{
+  "name": "NymphCast",
+  "version": "0_git20200312-r0",
+  "slug": "nymphcast",
+  "description": "Audio and video casting system with support for custom applications (server)",
+  "url": "https://github.com/MayaPosch/NymphCast",
+  "arch": [
+    "armhf",
+    "armv7"
+  ],
+  "startup": "system",
+  "boot": "auto",
+  "ports": {
+    "4004/tcp": 53
+  },
+  "host_network": true,
+  "full_access": true,
+  "privileges": ["NET_ADMIN"],
+  "apparmor": false,
+  "options": {},
+  "schema": {}
+}
