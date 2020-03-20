@@ -5,7 +5,7 @@ FROM $BUILD_FROM
 ENV LANG C.UTF-8
 
 # Setup base
-RUN apk add --no-cache nymphcast-server
+RUN apk add --no-cache nymphcast
 
 # Copy data
 COPY run.sh /
