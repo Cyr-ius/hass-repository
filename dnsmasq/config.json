@@ -25,6 +25,7 @@
   "apparmor": true,
   "options": {
     "debug": false,
+    "log-queries": false,
     "domain":[],
     "defaults": [
       "8.8.8.8",
