@@ -5,11 +5,13 @@ CONFIG="/etc/dnsmasq.conf"
 
 bashio::log.info "Configuring dnsmasq..."
 
+bashio::log.info "Configuring log queries..."
 if $(bashio::config 'logqueries');then
     echo "log-queries" >> "${CONFIG}"
 fi
 
 # Add domain range
+bashio::log.info "Configuring domain..."
 for domain in $(bashio::config 'domain'); do
     echo "domain=${domain}" >> "${CONFIG}"
     echo "local=/${domain}/" >> "${CONFIG}"
@@ -19,6 +21,7 @@ for domain in $(bashio::config 'domain'); do
 done
 
 # Add default forward servers
+bashio::log.info "Configuring forwarders..."
 for server in $(bashio::config 'defaults'); do
     echo "server=${server}" >> "${CONFIG}"
 done
@@ -32,6 +35,7 @@ for forward in $(bashio::config 'forwards|keys'); do
 done
 
 # Create static hosts
+bashio::log.info "Configuring static hosts..."
 for host in $(bashio::config 'hosts|keys'); do
     HOST=$(bashio::config "hosts[${host}].host")
     IP=$(bashio::config "hosts[${host}].ip")
@@ -40,6 +44,7 @@ for host in $(bashio::config 'hosts|keys'); do
 done
 
 # Create dhcp range
+bashio::log.info "Configuring range..."
 for range in $(bashio::config 'dhcprange|keys'); do
     RANGE=$(bashio::config "dhcprange[${range}].range")
     
@@ -47,6 +52,7 @@ for range in $(bashio::config 'dhcprange|keys'); do
 done
 
 # Create dhcp hosts
+bashio::log.info "Configuring hosts..."
 for host in $(bashio::config 'dhcphost|keys'); do
     MAC=$(bashio::config "dhcphost[${host}].mac")
     VALUE=$(bashio::config "dhcphost[${host}].value")
@@ -55,6 +61,7 @@ for host in $(bashio::config 'dhcphost|keys'); do
 done
 
 # Create dhcp options
+bashio::log.info "Configuring dhcp options..."
 for option in $(bashio::config 'dhcpoption|keys'); do
     OPTION=$(bashio::config "dhcpoption[${option}].option")
     VALUE=$(bashio::config "dhcpoption[${option}].value")
@@ -62,6 +69,7 @@ for option in $(bashio::config 'dhcpoption|keys'); do
     echo "dhcp-option=${OPTION},${VALUE}" >> "${CONFIG}"
 done
 
+bashio::log.info "Configuring dhcp..."
 if bashio::var.has_value "${RANGE}";then
     echo "dhcp-leasefile=/data/dnsmasq.leases" >> "${CONFIG}"
     echo "dhcp-authoritative" >> "${CONFIG}"
