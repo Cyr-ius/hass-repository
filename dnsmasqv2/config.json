@@ -1,6 +1,6 @@
 {
   "name": "Dnsmasq advanced v2",
-  "version": "1.7.6",
+  "version": "1.7.7",
   "slug": "dnsmasqadvancedv2",
   "description": "A simple DNS and DHCP server",
   "url": "https://github.com/cyr-ius/hass-repository/",
@@ -21,7 +21,7 @@
   "host_network": true,
   "full_access": true,
   "privileges": ["NET_ADMIN"],
-  "apparmor": false,
+  "apparmor": true,
   "options": {
     "debug": false,
     "logqueries": false,
