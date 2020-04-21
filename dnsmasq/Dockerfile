@@ -12,4 +12,6 @@ COPY data/run.sh /
 COPY data/dnsmasq.conf /etc/
 COPY data/dnsmasq.leases /data/
 
+RUN chmod a+x /run.sh
+
 CMD [ "/run.sh" ]
