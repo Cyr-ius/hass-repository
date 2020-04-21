@@ -6,7 +6,7 @@ CONFIG="/etc/dnsmasq.conf"
 bashio::log.info "Configuring dnsmasq..."
 
 bashio::log.info "Configuring log queries..."
-if $(bashio::config 'logqueries');then
+if $(bashio::config 'log-queries');then
     echo "log-queries" >> "${CONFIG}"
 fi
 
@@ -70,10 +70,10 @@ for option in $(bashio::config 'dhcpoption|keys'); do
 done
 
 bashio::log.info "Configuring dhcp..."
-#if bashio::var.has_value "${RANGE}";then
-echo "dhcp-leasefile=/data/dnsmasq.leases" >> "${CONFIG}"
-echo "dhcp-authoritative" >> "${CONFIG}"
-#fi
+if bashio::var.has_value "${RANGE}";then
+	echo "dhcp-leasefile=/data/dnsmasq.leases" >> "${CONFIG}"
+	echo "dhcp-authoritative" >> "${CONFIG}"
+fi
 
 if $(bashio::config 'enablera');then
     echo "enable-ra" >> "${CONFIG}"
