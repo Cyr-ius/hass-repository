@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.6
+
+- Add log-queries option
+
 ## 1.5
 
 - Fix NET ADMIN
