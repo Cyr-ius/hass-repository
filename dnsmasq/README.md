@@ -87,6 +87,10 @@ The hostname or domainname to resolve locally.
 
 The IP address Dnsmasq should respond with in its DNS answer.
 
+#### Option: `log-queries` -> `true` (optional)
+
+Enable log queries for DNS request.
+
 ## Support
 
 Got questions?
