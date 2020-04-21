@@ -4,6 +4,18 @@ set -e
 CONFIG="/etc/dnsmasq.conf"
 
 bashio::log.info "Configuring dnsmasq..."
+
+if  $(bashio::config 'debug');then
+    bashio::log.info "Viewing dnsmasq config"
+    bashio::log.info "----------------------"    
+    cat "${CONFIG}"
+    bashio::log.info "----------------------"
+fi
+
+if  $(bashio::config 'logqueries');then
+    echo "log-queries" >> "${CONFIG}" 
+fi
+
 # Add domain range
 for domain in $(bashio::config 'domain'); do
     echo "domain=${domain}" >> "${CONFIG}"
@@ -57,10 +69,10 @@ for option in $(bashio::config 'dhcpoption|keys'); do
     echo "dhcp-option=${OPTION},${VALUE}" >> "${CONFIG}"
 done
 
-#if bashio::var.has_value "${RANGE}";then
-echo "dhcp-leasefile=/data/dnsmasq.leases" >> "${CONFIG}"
-echo "dhcp-authoritative" >> "${CONFIG}"
-#fi
+if bashio::var.has_value "${RANGE}";then
+    echo "dhcp-leasefile=/data/dnsmasq.leases" >> "${CONFIG}"
+    echo "dhcp-authoritative" >> "${CONFIG}"
+fi
 
 if $(bashio::config 'enablera');then
     echo "enable-ra" >> "${CONFIG}"
@@ -68,17 +80,6 @@ if $(bashio::config 'enablera');then
     if bashio::var.has_value "${RAPARAM}";then
         echo "ra-param=${RAPARAM}" >> "${CONFIG}"
     fi
-fi
-
-if  $(bashio::config 'log-queries');then
-    echo "log-queries" >> "${CONFIG}" 
-fi
-
-if  $(bashio::config 'debug');then
-    bashio::log.info "Viewing dnsmasq config"
-    bashio::log.info "----------------------"    
-    cat "${CONFIG}"
-    bashio::log.info "----------------------"
 fi
 
 # run dnsmasq
