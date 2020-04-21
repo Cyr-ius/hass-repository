@@ -6,7 +6,7 @@ CONFIG="/etc/dnsmasq.conf"
 bashio::log.info "Configuring dnsmasq..."
 
 bashio::log.info "Configuring log queries..."
-if $(bashio::config 'log-queries');then
+if $(bashio::config 'logqueries');then
     echo "log-queries" >> "${CONFIG}"
 fi
 
