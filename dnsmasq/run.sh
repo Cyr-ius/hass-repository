@@ -70,6 +70,10 @@ if $(bashio::config 'enablera');then
     fi
 fi
 
+if  $(bashio::config 'log-queries');then
+    echo "log-queries" >> "${CONFIG}" 
+fi
+
 if  $(bashio::config 'debug');then
     bashio::log.info "Viewing dnsmasq config"
     bashio::log.info "----------------------"    
