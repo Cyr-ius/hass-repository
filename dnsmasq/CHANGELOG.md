@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.7.2
+
+- Fix release version
+
 ## 1.6
 
 - Add log-queries option
