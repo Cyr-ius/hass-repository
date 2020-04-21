@@ -41,6 +41,7 @@
   },
   "schema": {
     "debug": "bool",
+    "log-queries": "bool",
     "domain": ["str"],  
     "defaults": ["str"],
     "forwards": [
