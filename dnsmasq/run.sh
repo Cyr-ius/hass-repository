@@ -57,10 +57,10 @@ for option in $(bashio::config 'dhcpoption|keys'); do
     echo "dhcp-option=${OPTION},${VALUE}" >> "${CONFIG}"
 done
 
-if bashio::var.has_value "${RANGE}";then
-    echo "dhcp-leasefile=/data/dnsmasq.leases" >> "${CONFIG}"
-    echo "dhcp-authoritative" >> "${CONFIG}"
-fi
+#if bashio::var.has_value "${RANGE}";then
+echo "dhcp-leasefile=/data/dnsmasq.leases" >> "${CONFIG}"
+echo "dhcp-authoritative" >> "${CONFIG}"
+#fi
 
 if $(bashio::config 'enablera');then
     echo "enable-ra" >> "${CONFIG}"
