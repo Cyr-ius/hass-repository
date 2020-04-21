@@ -5,15 +5,8 @@ CONFIG="/etc/dnsmasq.conf"
 
 bashio::log.info "Configuring dnsmasq..."
 
-if  $(bashio::config 'debug');then
-    bashio::log.info "Viewing dnsmasq config"
-    bashio::log.info "----------------------"    
-    cat "${CONFIG}"
-    bashio::log.info "----------------------"
-fi
-
-if  $(bashio::config 'logqueries');then
-    echo "log-queries" >> "${CONFIG}" 
+if $(bashio::config 'logqueries');then
+    echo "log-queries" >> "${CONFIG}"
 fi
 
 # Add domain range
@@ -80,6 +73,13 @@ if $(bashio::config 'enablera');then
     if bashio::var.has_value "${RAPARAM}";then
         echo "ra-param=${RAPARAM}" >> "${CONFIG}"
     fi
+fi
+
+if  $(bashio::config 'debug');then
+    bashio::log.info "Viewing dnsmasq config"
+    bashio::log.info "----------------------"    
+    cat "${CONFIG}"
+    bashio::log.info "----------------------"
 fi
 
 # run dnsmasq
