@@ -20,9 +20,7 @@
     "547/udp": 547
   },
   "host_network": true,
-  "full_access": true,
   "privileged": ["NET_ADMIN"],
-  "apparmor": false,
   "options": {
     "debug": false,
     "logqueries": false,
