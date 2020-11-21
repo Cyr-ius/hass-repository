@@ -14,6 +14,7 @@ profile dnsmasq flags=(attach_disconnected,mediate_deleted) {
   capability net_raw,           # for DHCP server ping checks
 
   /bin/busybox ix,
+  /bin/importas ix,
   /bin/bash ix,
   /usr/bin/jq ix,
   /usr/sbin/dnsmasq ix,
