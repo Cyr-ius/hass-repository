@@ -21,7 +21,7 @@
   },
   "host_network": true,
   "full_access": true,
-  "privileged": ["NET_ADMIN","NET_BIND_SERVICE"],
+  "privileged": ["NET_ADMIN"],
   "apparmor": true,
   "options": {
     "debug": false,
