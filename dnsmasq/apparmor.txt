@@ -15,6 +15,7 @@ profile dnsmasq flags=(attach_disconnected,mediate_deleted) {
 
   /bin/busybox ix,
   /bin/importas ix,
+  /bin/export ix,
   /bin/bash ix,
   /usr/bin/jq ix,
   /usr/sbin/dnsmasq ix,
