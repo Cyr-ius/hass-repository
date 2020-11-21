@@ -21,7 +21,7 @@ profile dnsmasq flags=(attach_disconnected,mediate_deleted) {
   /usr/sbin/dnsmasq ix,
   /usr/sbin/arp ix,
   /usr/sbin/ip* ix,
-  /etc/s6/init/init-stage1 ix,
+  /etc/s6/init/init-stage1 rix,
 
   /etc/dnsmasq.conf rw,
   /data/dnsmasq.leases rw,
