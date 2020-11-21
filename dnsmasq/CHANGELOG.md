@@ -1,4 +1,8 @@
 # Changelog
+## 1.8.3
+
+- Fix privileges for dockerfile
+
 ## 1.8.1
 
 - Fix apparmor
