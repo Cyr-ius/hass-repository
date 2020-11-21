@@ -1,4 +1,4 @@
-# Dnsmasq
+# Dnsmasq with DHCP option
 
 A simple DNS server and DHCP server.
 
@@ -90,6 +90,24 @@ The IP address Dnsmasq should respond with in its DNS answer.
 #### Option: `log-queries` -> `true` (optional)
 
 Enable log queries for DNS request.
+
+#### Option: `dhcprange` -> `ip` (optional)
+
+Enable the DHCP server. Addresses will be given out from the range <start-addr> to <end-addr> 
+and from statically defined addresses given in dhcp-host options.
+[[net:]network-id,]<start-addr>,<end-addr>[[,<netmask>],<broadcast>][,<lease time>]
+
+#### Option: `dhcphost` -> `ip` (optional)
+
+Specify per host parameters for the DHCP server. This allows a machine with 
+a particular hardware address to be always allocated the same hostname, IP address and lease time
+
+#### Option: `dhcpoption` -> `ip` (optional)
+
+Specify different or extra options to DHCP clients. By default, dnsmasq sends 
+some standard options to DHCP clients, the netmask and broadcast address are set to
+the same as the host running dnsmasq, and the DNS server and default route are set to the address
+of the machine running dnsmasq
 
 ## Support
 
