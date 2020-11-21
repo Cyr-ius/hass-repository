@@ -1,4 +1,7 @@
 # Changelog
+## 1.8.1
+
+- Fix apparmor
 
 ## 1.7.2
 
