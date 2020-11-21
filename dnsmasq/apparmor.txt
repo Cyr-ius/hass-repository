@@ -33,5 +33,6 @@ profile dnsmasq flags=(attach_disconnected,mediate_deleted) {
   /proc/net/* rw,
 
   /run.sh rix,
+  /init rix,
   /data/** rw,
 }
